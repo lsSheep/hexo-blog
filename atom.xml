@@ -77,9 +77,9 @@
     <category term="流程图" scheme="http://cloudsheep.xyz/category/%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
     
     
-    <category term="画图详解" scheme="http://cloudsheep.xyz/tag/%E7%94%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3/"/>
-    
     <category term="Kubernetes" scheme="http://cloudsheep.xyz/tag/Kubernetes/"/>
+    
+    <category term="画图详解" scheme="http://cloudsheep.xyz/tag/%E7%94%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3/"/>
     
   </entry>
   
@@ -100,9 +100,9 @@
     <category term="流程图" scheme="http://cloudsheep.xyz/category/%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
     
     
-    <category term="OpenStack" scheme="http://cloudsheep.xyz/tag/OpenStack/"/>
-    
     <category term="画图详解" scheme="http://cloudsheep.xyz/tag/%E7%94%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3/"/>
+    
+    <category term="OpenStack" scheme="http://cloudsheep.xyz/tag/OpenStack/"/>
     
   </entry>
   
