@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            关于
+            About Me
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -38,7 +38,7 @@
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">关于</h1>
+                <h1 class="header-subtitle">About Me</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text Chinese"></p>
                     <p class="article-info-text English"></p>                  
@@ -55,20 +55,76 @@
             <div id="article">
                 <div class="article-body">
                     
-                    <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>我是一个在命运长河里挣扎的小鱼，90后，目前是小白一枚。<br>虽然心中不甘，但是目前确实是 <strong>Worst One</strong> 。<br>目标是成为全栈工程师、系统架构师。虽然前路迷茫，但是我会一步一步往前走。</p>
-<h2 id="关于主题"><a href="#关于主题" class="headerlink" title="关于主题"></a>关于主题</h2><p><a target="_blank" rel="noopener" href="https://github.com/first19326/Hexo-LiveForCode/">Hexo - LiveForCode</a> 主题是根据 <a target="_blank" rel="noopener" href="https://dbnuo.com/">BNDong</a> 的博客样式复制过来的，其中也借鉴了 <a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">Hexo - NexT</a> 主题的样式。可能这个主题还有很多不尽人意的地方，在后续的阶段我会不断地完善，如果有关于主题的相关问题，欢迎联系我。</p>
+                    <h1 id="Hi-There"><a href="#Hi-There" class="headerlink" title="Hi There"></a>Hi There</h1><h2 id="一名在校大学生"><a href="#一名在校大学生" class="headerlink" title="一名在校大学生"></a>一名在校大学生</h2><h3 id="目前在校参加比赛学习专业知识"><a href="#目前在校参加比赛学习专业知识" class="headerlink" title="目前在校参加比赛学习专业知识"></a>目前在校参加比赛学习专业知识</h3><table>
+<thead>
+<tr>
+<th>Tournament Events</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第十八届全国“振兴杯”重庆市选拔赛</td>
+<td>2023-10-14</td>
+</tr>
+<tr>
+<td>华为ICT大赛2023-2024年中国区重庆市实践赛初赛</td>
+<td>2023-11-25</td>
+</tr>
+</tbody></table>
+<h1 id="Skill"><a href="#Skill" class="headerlink" title="Skill"></a>Skill</h1><ul>
+<li>docker</li>
+<li>kuberentes</li>
+<li>openstack</li>
+<li>mysql</li>
+<li>计算机网络</li>
+</ul>
 
                     
                 </div>
                 
-    <script type="module">
-        import { pageviewCount } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/pageview.mjs";
-      
-        pageviewCount({
-          serverURL: "https://waline.cloudsheep.xyz/",
-          path: window.location.pathname,
-        });
-    </script>
+    <div class="article-comments">
+        
+        <div class="comments-content"></div>
+    </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
+
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://waline.cloudsheep.xyz/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "I'm proud of myself...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
  
             </div>
         
