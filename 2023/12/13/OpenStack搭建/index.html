@@ -47,19 +47,19 @@
                         
                             
                                 <span>
-                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/13/OpenStack-02/"></span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/13/OpenStack搭建/"></span>
                                 </span>
                             
                             
                                 <span>
-                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/13/OpenStack-02/"></span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/13/OpenStack搭建/"></span>
                                 </span>
                               
                         
                     </p>
                     
                         
-                            <span class="category-color">流程图</span>
+                            <span class="category-color">教程</span>
                         
                     
                     
@@ -100,14 +100,37 @@
 <td>4核4g，硬盘200g</td>
 </tr>
 </tbody></table>
-<h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><p>controller节点</p>
+<p><em>注：为了不影响后续操作，两台主机默认密码都是“000000”</em></p>
+<h2 id="修改主机名"><a href="#修改主机名" class="headerlink" title="修改主机名"></a>修改主机名</h2><p><strong>controller节点</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname contrller</span><br><span class="line">bash          </span><br></pre></td></tr></table></figure>
 
-<p>computer节点</p>
+<p><strong>computer节点</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname computer</span><br><span class="line">bash</span><br></pre></td></tr></table></figure>
 
-<h2 id="主机映射"><a href="#主机映射" class="headerlink" title="主机映射"></a>主机映射</h2><p>双节点</p>
+<h2 id="主机映射"><a href="#主机映射" class="headerlink" title="主机映射"></a>主机映射</h2><p><strong>双节点(两个节点都需要执行)</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt;/etc/hosts &lt;&lt;EOF</span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">192.168.10.10 controller</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">192.168.10.20 computer</span></span><br><span class="line"><span class="meta prompt_">&gt;</span><span class="language-bash">EOF</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="关闭防火墙配置免密登录"><a href="#关闭防火墙配置免密登录" class="headerlink" title="关闭防火墙配置免密登录"></a>关闭防火墙配置免密登录</h2><p><strong>双节点</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld &amp;&amp; setenforce 0  #暂时关闭防火墙和seliunx(重启后会自启动)</span><br><span class="line">systemctl disable firewalld               #永久关闭防火墙(关闭开机自启动，需要手动开启)</span><br><span class="line"> </span><br><span class="line">sed -i &#x27;s/enforcing/disabled/&#x27; /etc/selinux/config #使用命令修改文件永久关闭seliunx</span><br><span class="line">or</span><br><span class="line">vi /etc/selinux/config                    #直接进入文件进行修改</span><br><span class="line">将&#x27;SELINUX=enforcing&#x27;改为&#x27;SELINUX=disabled&#x27;</span><br><span class="line">ssh-keygen -t rsa         #按三次回车</span><br><span class="line">ssh-copy-id controller    #第一次输入yes,第二次输入主机密码</span><br><span class="line">ssh-copy-id compute       #第一次输入yes,第二次输入主机密码</span><br></pre></td></tr></table></figure>
+
+<h1 id="时间同步"><a href="#时间同步" class="headerlink" title="时间同步"></a>时间同步</h1><p><strong>双节点</strong></p>
+<p><strong>安装 Chrony或NTP来实现（Chrony更适合虚拟化）</strong></p>
+<h2 id="Chrony"><a href="#Chrony" class="headerlink" title="Chrony"></a>Chrony</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum -y install chrony   #安装Chrony服务</span><br><span class="line"></span><br><span class="line">vi /etc/chrony.conf     #修改配置文件</span><br><span class="line">server 0.centos.pool.ntp.org iburst 改为 server ntp3.aliyun.com iburst</span><br><span class="line">server 1.centos.pool.ntp.org iburst #删除</span><br><span class="line">server 2.centos.pool.ntp.org iburst #删除</span><br><span class="line">server 3.centos.pool.ntp.org iburst #删除</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">allow 192.168.0.0/16 改为 allow all</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="built_in">local</span> stratum 10   <span class="comment">#去掉注释</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>修改后的配置文件：</strong></p>
+<p><img src="https://www.z4a.net/images/2023/12/15/2023-12-15-110620.png" alt="2023-12-15-110620.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart chronyd   #重启chrony服务</span><br><span class="line">systemctl status  chronyd   #查看状态</span><br><span class="line">chronyc sources             #验证</span><br><span class="line">210 Number of sources = 1</span><br><span class="line">MS Name/IP address         Stratum Poll Reach LastRx Last sample               </span><br><span class="line">===============================================================================</span><br><span class="line">^* 203.107.6.88                  2   6    37    47    -63us[ -319us] +/-   41ms</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">左下角显示*号说明配置成功</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NTP"><a href="#NTP" class="headerlink" title="NTP"></a>NTP</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ntp       #安装ntp服务</span><br><span class="line"></span><br><span class="line">vi /etc/ntp.conf         #编辑配置文件</span><br><span class="line">server &lt;NTP服务器IP&gt;      #添加的内容(可参考下方注释内容)</span><br><span class="line"></span><br><span class="line">systemctl restart ntpd   #重启</span><br><span class="line">systemctl status ntpd    #查看状态</span><br><span class="line">systemctl enable ntpd    #设置为开机自启动</span><br><span class="line"></span><br><span class="line">ntpdate -q &lt;主机IP&gt;       #输入主机IP验证两台主机时间是否同步成功</span><br></pre></td></tr></table></figure>
+
+<p><em>注：公共的ntp服务器</em></p>
+<ul>
+<li><em><a target="_blank" rel="noopener" href="http://cn.pool.ntp.org/">cn.pool.ntp.org</a>（中国公共NTP服务器）</em></li>
+<li><em><a target="_blank" rel="noopener" href="http://pool.ntp.org/">pool.ntp.org</a>（全球公共NTP服务器）</em></li>
+</ul>
+<h1 id="安装软件包、数据库、消息队列、缓存"><a href="#安装软件包、数据库、消息队列、缓存" class="headerlink" title="安装软件包、数据库、消息队列、缓存"></a>安装软件包、数据库、消息队列、缓存</h1><h2 id="安装OpenStack软件包"><a href="#安装OpenStack软件包" class="headerlink" title="安装OpenStack软件包"></a>安装OpenStack软件包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum -y install centos-release-openstack-train    #启用OpenStack存储库</span><br><span class="line">yum upgrade                                      #更新软件包</span><br><span class="line">yum -y install python-openstackclient            #安装OpenStack客户端</span><br><span class="line">yum -y install openstack-selinux</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装SQL数据库"><a href="#安装SQL数据库" class="headerlink" title="安装SQL数据库"></a>安装SQL数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install mariadb mariadb-server python2-PyMySQL      #安装</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
                 
@@ -121,11 +144,11 @@
     <div class="suffix-box-right">
         <span class="suffix-box-title">文章作者：</span>CloudSheep
         <br>
-        <span class="suffix-box-title">文章出处：</span><a href="/2023/12/13/OpenStack-02/" target="_blank">OpenStack搭建</a>
+        <span class="suffix-box-title">文章出处：</span><a href="/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/" target="_blank">OpenStack搭建</a>
         <br>
         <span class="suffix-box-title">作者签名：</span>不啻微芒，造炬成阳
         <br>
-        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">Hexo - Live For Code</a>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">hexo-blog</a>
         <br>
         <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
         <br>
@@ -136,7 +159,7 @@
                     <div class="category">
                         分类：
                         
-                            <a href="/category/%E6%B5%81%E7%A8%8B%E5%9B%BE/">流程图</a>
+                            <a href="/category/%E6%95%99%E7%A8%8B/">教程</a>
                         
                     </div>
                 
@@ -156,7 +179,7 @@
                         <br>
                     
                     
-                        <a href="/2023/12/12/Kubernetes-01/" class="next-prefix">» </a> 下一篇：    <a href="/2023/12/12/Kubernetes-01/" title="发布于 2023-12-12 02:34">Kubernetes流程图</a>
+                        <a href="/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/" class="next-prefix">» </a> 下一篇：    <a href="/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/" title="发布于 2023-12-12 02:34">Kubernetes流程图</a>
                     
                 </div>
             </div>
@@ -874,7 +897,7 @@
             
         Theme : {
             url  : "https://github.com/lsSheep/hexo-blog.git",
-            name : "Hexo - Live For Code"
+            name : "hexo-blog"
         }  
     };
 </script>
