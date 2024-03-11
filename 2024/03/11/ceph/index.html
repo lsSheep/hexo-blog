@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            归档
+            ceph
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -33,15 +33,42 @@
 </head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">归档</h1>
+                <h1 class="header-subtitle">ceph</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2024-03-11
+                        </span>
+                        
+                            
+                                <span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/03/11/ceph/"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/03/11/ceph/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">教程</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">ceph</span>
+                        
+                            <span class="tag-color">存储</span>
+                        
+                    
                 </div>
             
         </div>
@@ -50,107 +77,307 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="Ceph版本来源介绍"><a href="#Ceph版本来源介绍" class="headerlink" title="Ceph版本来源介绍"></a>Ceph版本来源介绍</h1><p><strong>第一个 Ceph 版本是 0.1 ，要回溯到 2008 年 1 月。多年来，版本号方案一直没变，直到 2015 年 4 月 0.94.1 （ Hammer 的第一个修正版）发布后，为了避免 0.99 （以及 0.100 或 1.00 ？），制定了新策略。</strong></p>
+<p><strong>x.0.z - 开发版（给早期测试者和勇士们）</strong></p>
+<p><strong>x.1.z - 候选版（用于测试集群、高手们）</strong></p>
+<p><strong>x.2.z - 稳定、修正版（给用户们）</strong></p>
+<p><strong>x 将从 9 算起，它代表 Infernalis （ I 是第九个字母），这样第九个发布周期的第一个开发版就是 9.0.0 ；后续的开发版依次是 9.0.1 、 9.0.2 等等。</strong></p>
+<table>
+<thead>
+<tr>
+<th>版本名称</th>
+<th>版本号</th>
+<th>发布时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Argonaut</td>
+<td>0.48版本(LTS)</td>
+<td>2012年6月3日</td>
+</tr>
+<tr>
+<td>Bobtail</td>
+<td>0.56版本(LTS)</td>
+<td>2013年5月7日</td>
+</tr>
+<tr>
+<td>Cuttlefish</td>
+<td>0.61版本</td>
+<td>2013年1月1日</td>
+</tr>
+<tr>
+<td>Dumpling</td>
+<td>0.67版本(LTS)</td>
+<td>2013年8月14日</td>
+</tr>
+<tr>
+<td>Emperor</td>
+<td>0.72版本</td>
+<td>2013年11月9</td>
+</tr>
+<tr>
+<td>Firefly</td>
+<td>0.80版本(LTS)</td>
+<td>2014年5月</td>
+</tr>
+<tr>
+<td>Giant</td>
+<td>Giant</td>
+<td>October 2014 - April 2015</td>
+</tr>
+<tr>
+<td>Hammer</td>
+<td>Hammer</td>
+<td>April 2015 - November 2016</td>
+</tr>
+<tr>
+<td>Infernalis</td>
+<td>Infernalis</td>
+<td>November 2015 - June 2016</td>
+</tr>
+<tr>
+<td>Jewel</td>
+<td>10.2.9</td>
+<td>2016年4月</td>
+</tr>
+<tr>
+<td>Kraken</td>
+<td>11.2.1</td>
+<td>2017年10月</td>
+</tr>
+<tr>
+<td>Luminous</td>
+<td>12.2.12</td>
+<td>2017年10月</td>
+</tr>
+<tr>
+<td>mimic</td>
+<td>13.2.7</td>
+<td>2018年5月</td>
+</tr>
+<tr>
+<td>nautilus</td>
+<td>14.2.5</td>
+<td>2019年2月</td>
+</tr>
+<tr>
+<td>Octopus</td>
+<td>15.2.17</td>
+<td>2020-03-23</td>
+</tr>
+<tr>
+<td>Pacific</td>
+<td>16.2.15</td>
+<td>2021-03-31</td>
+</tr>
+<tr>
+<td>Quincy</td>
+<td>17.2.7</td>
+<td>2022-04-19</td>
+</tr>
+<tr>
+<td>Reef</td>
+<td>18.2.1</td>
+<td>2023-08-07</td>
+</tr>
+</tbody></table>
+<p><strong>根据<a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/releases/">官网</a>给出的消息目前从O版开始(包括O版)之前的版本都不会再进行维护更新</strong></p>
+<h1 id="安装方式介绍"><a href="#安装方式介绍" class="headerlink" title="安装方式介绍"></a>安装方式介绍</h1><p> <strong><a target="_blank" rel="noopener" href="https://docs.ceph.com/ceph-ansible/">ceph-ansible</a> : 部署和管理 使用 Ansible 的 Ceph 集群。</strong></p>
+<ul>
+<li><strong>ceph-ansible 被广泛部署。</strong></li>
+<li><strong>ceph-ansible 未与 在 Nautilus 和 Octopus 中引入，这意味着管理功能 而 Nautilus 和 Octopus 中引入的仪表板集成则不是 在通过 ceph-ansible 部署的 Ceph 集群中可用。</strong></li>
+</ul>
+<p> <strong><a target="_blank" rel="noopener" href="https://docs.ceph.com/projects/ceph-deploy/en/latest/">ceph-deploy</a> : 是一个 可用于快速部署集群的工具。</strong></p>
+<p> <strong><a target="_blank" rel="noopener" href="https://docs.ceph.com/en/latest/cephadm/install/#cephadm-deploying-new-cluster">Cephadm</a> : 是一种可用于 安装和管理 Ceph 集群。(它不支持 RHEL8、CentOS 8 或更高版本的操作 系统。)</strong></p>
+<ul>
+<li><strong>cephadm 只支持 Octopus 及更新版本。</strong></li>
+<li><strong>cephadm 与编排 API 完全集成，并完全支持 用于管理集群部署的 CLI 和仪表板功能。</strong></li>
+<li><strong>cephadm 需要容器支持（以 Podman 或 Docker 的形式）和 Python 3.</strong></li>
+<li><strong>cephadm 需要 systemd。</strong></li>
+</ul>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><h2 id="准备四台台虚拟机"><a href="#准备四台台虚拟机" class="headerlink" title="准备四台台虚拟机"></a><strong>准备四台台虚拟机</strong></h2><table>
+<thead>
+<tr>
+<th>主机名</th>
+<th>IP地址</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>center</td>
+<td>192.168.10.100</td>
+<td>2核2G +20g</td>
+</tr>
+<tr>
+<td>ceph-node1</td>
+<td>192.168.10.11</td>
+<td>2核2G +20g+30g+30g+30g(临时)</td>
+</tr>
+<tr>
+<td>ceph-node2</td>
+<td>192.168.10.12</td>
+<td>2核2G +20g+30g+30g+30g(临时)</td>
+</tr>
+<tr>
+<td>ceph-noded3</td>
+<td>192.168.10.13</td>
+<td>2核2G +20g+30g+30g+30g(临时)</td>
+</tr>
+</tbody></table>
+<h3 id="关闭防火墙，seliunx"><a href="#关闭防火墙，seliunx" class="headerlink" title="关闭防火墙，seliunx"></a>关闭防火墙，seliunx</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld &amp;&amp; setenforce 0</span><br><span class="line">sed -i &#x27;s/enforcing/disabled/&#x27; /etc/selinux/config</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改主机名，主机映射"><a href="#修改主机名，主机映射" class="headerlink" title="修改主机名，主机映射"></a>修改主机名，主机映射</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">四台虚拟机分别执行</span></span><br><span class="line">hostnamectl set-hostname center</span><br><span class="line">hostnamectl set-hostname ceph-1</span><br><span class="line">hostnamectl set-hostname ceph-2</span><br><span class="line">hostnamectl set-hostname ceph-3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">主机映射</span></span><br><span class="line">cat &gt;&gt;/etc/hosts &lt;&lt;EOF</span><br><span class="line">192.168.10.100 center</span><br><span class="line">192.168.10.11 ceph-1</span><br><span class="line">192.168.10.12 ceph-2</span><br><span class="line">192.168.10.13 ceph-3</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置ntp服务器同步时间"><a href="#配置ntp服务器同步时间" class="headerlink" title="配置ntp服务器同步时间"></a>配置ntp服务器同步时间</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum -y install ntp       #安装ntp</span><br><span class="line"></span><br><span class="line">vi /etc/ntp.conf         #编辑配置文件(ceph-1 ceph-2 ceph-3 节点)</span><br><span class="line">server center iburst     #添加的内容(将原来的注释掉)</span><br><span class="line"></span><br><span class="line">systemctl restart ntpd   #重启</span><br><span class="line">systemctl status ntpd    #查看状态</span><br><span class="line">systemctl enable ntpd    #设置为开机自启动</span><br><span class="line"></span><br><span class="line">ntpdate -q &lt;主机IP&gt;       #输入主机IP验证各主机时间是否同步成功</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置免密登录"><a href="#配置免密登录" class="headerlink" title="配置免密登录"></a>配置免密登录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">ssh-copy-id ceph-1</span><br><span class="line">ssh-copy-id ceph-2</span><br><span class="line">ssh-copy-id ceph-3</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置yum源"><a href="#配置yum源" class="headerlink" title="配置yum源"></a>配置yum源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">清除以前的yum源</span></span><br><span class="line">rm -rf /etc/yum.repos.d/* </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">配置阿里云镜像源</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">centos7</span></span><br><span class="line">curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">epel</span></span><br><span class="line">wget -O /etc/yum.repos.d/epel.repo https://mirrors.aliyun.com/repo/epel-7.repo</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建配置文件/etc/yum.repos.d/ceph-repo,并添加以下内容</span></span><br><span class="line">cat &lt;&lt; EOF | tee /etc/yum.repos.d/ceph.repo </span><br><span class="line">[ceph-norch]</span><br><span class="line">name=ceph-norch</span><br><span class="line">baseurl=https://mirrors.aliyun.com/ceph/rpm-nautilus/el7/noarch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">[ceph-x86_64]</span><br><span class="line">name=ceph-x86_64</span><br><span class="line">baseurl=https://mirrors.aliyun.com/ceph/rpm-nautilus/el7/x86_64/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">清除yum配置重新生成缓存</span></span><br><span class="line">yum clean all &amp;&amp; yum makecache</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="ceph集群搭建"><a href="#ceph集群搭建" class="headerlink" title="ceph集群搭建"></a>ceph集群搭建</h1><h2 id="安装部署工具"><a href="#安装部署工具" class="headerlink" title="安装部署工具"></a>安装部署工具</h2><h3 id="center节点"><a href="#center节点" class="headerlink" title="center节点"></a>center节点</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum -y install python-setuptools</span><br><span class="line">yum -y install ceph-deploy</span><br><span class="line"></span><br><span class="line">ceph-deploy --version            #验证版本是否为2.0.1</span><br></pre></td></tr></table></figure>
+
+<h3 id="ceph-1-ceph-2-ceph-3-节点"><a href="#ceph-1-ceph-2-ceph-3-节点" class="headerlink" title="ceph-1 ceph-2 ceph-3 节点"></a>ceph-1 ceph-2 ceph-3 节点</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装所需要的包</span></span><br><span class="line">yum -y install ceph ceph-mon ceph-osd ceph-mds ceph-radosgw ceph-mgr</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">验证(共十二个)</span></span><br><span class="line">rpm -qa | grep ceph</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.z4a.net/images/2024/03/07/-2024-03-07-145843.png" alt="-2024-03-07-145843.png"></p>
+<h2 id="部署monitor"><a href="#部署monitor" class="headerlink" title="部署monitor"></a>部署monitor</h2><p><strong>将ceph-1节点作为monitor，在center节点进行部署</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建一个目录 /ceph-mon 存放部署时产生的文件</span></span><br><span class="line">mkdir /ceph-demo</span><br><span class="line">cd /ceph-mdemo/</span><br><span class="line">ceph-deploy new ceph-1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">初始化monitor</span></span><br><span class="line">ceph-deploy mon create-initial</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">将配置文件拷贝到其他节点上</span></span><br><span class="line">ceph-deploy admin ceph-1 ceph-2 ceph-3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">注：如果想要部署高可用monitor，可以将多个节点添加进去，例如：</span></span><br><span class="line">ceph-deploy mon add ceph-2</span><br><span class="line">ceph-deploy mon add ceph-3</span><br></pre></td></tr></table></figure>
+
+<h2 id="部署manager"><a href="#部署manager" class="headerlink" title="部署manager"></a>部署manager</h2><p><strong>将ceph-1节点作为mgr，在center节点进行部署</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">进入/ceph-demo目录，方便后续操作</span></span><br><span class="line">cd /ceph-demo</span><br><span class="line">ceph-ceploy mgr create ceph-1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">高可用</span></span><br><span class="line">ceph-deploy mgr create ceph-2 ceph-3</span><br></pre></td></tr></table></figure>
+
+<h2 id="OSD"><a href="#OSD" class="headerlink" title="OSD"></a>OSD</h2><h3 id="存储方式"><a href="#存储方式" class="headerlink" title="存储方式"></a>存储方式</h3><p>*<em>OSD 可以通过两种方式管理其存储的数据。截至 Luminous 12.2.z 版本，默认（也是推荐的）后端是 <em>BlueStore</em>。事先 在 Luminous 版本中，默认（也是唯一）后端是 <em>Filestore</em>。</em>*</p>
+<p><strong>BlueStore：</strong></p>
+<ul>
+<li><p><strong>BlueStore直接管理裸设备或分区，绕过传统的文件系统层，将数据和元数据直接存储在物理介质上，从而减少IO路径上的开销。</strong></p>
+</li>
+<li><p><strong>效率更高，适合高性能应用场景，如云存储、大规模数据分析和高并发访问的场景。</strong></p>
+</li>
+<li><p><strong>不依赖文件系统，因此不受文件系统限制，例如inode数量等。</strong></p>
+</li>
+</ul>
+<p><strong>FileStore(文件存储)：</strong></p>
+<ul>
+<li><p><strong>Filestore 已在 Reef 版本中弃用，不再受支持。</strong></p>
+</li>
+<li><p><strong>FileStore使用传统的文件系统（通常是XFS）来组织存储空间，每个Ceph对象作为一个文件存储在文件系统内。</strong></p>
+</li>
+<li><p><strong>由于存在文件系统层，对于大规模并发的随机读写场景，性能相对BlueStore较低。</strong></p>
+</li>
+<li><p><strong>写前日志机制会引入额外的写放大数据，可能影响性能，尤其是当日志和OSD数据位于同一硬盘时。</strong></p>
+</li>
+<li><p><strong>便于管理，文件系统的使用使得FileStore在一定程度上更易于管理和维护，比如可以通过标准文件系统工具进行检查和修复。</strong></p>
+</li>
+</ul>
+<p><strong>在目前的版本中传统的文件存储方式（FileStore）已经逐渐被 BlueStore 这种方式所替代</strong></p>
+<h3 id="部署OSD"><a href="#部署OSD" class="headerlink" title="部署OSD"></a>部署OSD</h3><p><strong>选用 FileStore 作为存储引擎，选用每个节点上的 &#x2F;dev&#x2F;sdb 作为数据盘，&#x2F;dev&#x2F;sdc作为日志盘，在center节点上进行操作部署</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">确认每个节点上的磁盘状况</span></span><br><span class="line">ceph-deploy disk list ceph-1 ceph-2 ceph-3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">清理每个节点上的磁盘和系统文件</span></span><br><span class="line">ceph-deploy disk zap ceph-1 /dev/sdb</span><br><span class="line">ceph-deploy disk zap ceph-2 /dev/sdb</span><br><span class="line">ceph-deploy disk zap ceph-3 /dev/sdb</span><br><span class="line">ceph-deploy disk zap ceph-1 /dev/sdc</span><br><span class="line">ceph-deploy disk zap ceph-2 /dev/sdc</span><br><span class="line">ceph-deploy disk zap ceph-3 /dev/sdc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">添加osd</span></span><br><span class="line">ceph-deploy osd create --data /dev/sdb --journal /dev/sdc --filestore ceph-1</span><br><span class="line">ceph-deploy osd create --data /dev/sdb --journal /dev/sdc --filestore ceph-2</span><br><span class="line">ceph-deploy osd create --data /dev/sdb --journal /dev/sdc --filestore ceph-3</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在center节点上验证</span></span><br><span class="line">yum -y isntall ceph</span><br><span class="line">cp ceph.conf /etc/ceph/</span><br><span class="line">cp ceph.client.admin.keyring /etc/ceph/</span><br><span class="line">ceph -s        #访问ceph集群</span><br></pre></td></tr></table></figure>
+
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/images/User/vavtarsheep.jpg" alt="CloudSheep">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>CloudSheep
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2024/03/11/ceph/" target="_blank">ceph</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>不啻微芒，造炬成阳
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">hexo-blog</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
                         
-                            目前共计 9 篇日志，继续加油！
+                            <a href="/category/%E6%95%99%E7%A8%8B/">教程</a>
                         
-                    </span>
-                    
-                    
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
                         
-                            <div class="archive-title">
-                                <h2 class="archive-year">2023</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/12/14/hello-world/"><span>Hello World</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">12-14</span>
-                                </div>
-                            </div>
-                        </div>
+                            <a href="/tag/ceph/">ceph</a>
+                        
+                            <a href="/tag/%E5%AD%98%E5%82%A8/">存储</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/"><span>OpenStack搭建</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">12-13</span>
-                                </div>
-                            </div>
-                        </div>
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/"><span>Kubernetes流程图</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">12-12</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/12/12/Kubernetes%E8%AF%A6%E8%A7%A3/"><span>Kubernetes详解</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">12-12</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/12/12/OpenStack%E6%A0%B8%E5%BF%83%E9%A1%B9%E7%9B%AE%E6%BC%94%E5%8F%98/"><span>OpenStack核心项目演变</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">12-12</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/10/25/MySQL/"><span>MySQL-基础篇</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">10-25</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/10/20/Dockerfile/"><span>dockerfile</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">10-20</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2023/10/17/Docker/"><span>Docker</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">10-17</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2023/12/14/hello-world/" class="next-prefix">» </a> 下一篇：    <a href="/2023/12/14/hello-world/" title="发布于 2023-12-14 11:20">Hello World</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
+
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://waline.cloudsheep.xyz/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "I'm proud of myself...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
@@ -188,7 +415,7 @@
                     
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
-                        <li class=" active "><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
                         <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
                     
