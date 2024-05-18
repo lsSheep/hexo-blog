@@ -77,9 +77,9 @@
     <category term="教程" scheme="http://cloudsheep.xyz/category/%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="运维" scheme="http://cloudsheep.xyz/tag/%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="OpenStack" scheme="http://cloudsheep.xyz/tag/OpenStack/"/>
+    
+    <category term="运维" scheme="http://cloudsheep.xyz/tag/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
