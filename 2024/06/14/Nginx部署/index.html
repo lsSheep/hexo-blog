@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            归档
+            “Nginx部署”
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -33,15 +33,42 @@
 </head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">归档</h1>
+                <h1 class="header-subtitle">“Nginx部署”</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2024-06-14
+                        </span>
+                        
+                            
+                                <span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/14/Nginx部署/"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/14/Nginx部署/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">实战</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">nginx</span>
+                        
+                            <span class="tag-color">前端</span>
+                        
+                    
                 </div>
             
         </div>
@@ -50,57 +77,138 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <h1 id="安装nginx第三方库"><a href="#安装nginx第三方库" class="headerlink" title="安装nginx第三方库"></a>安装nginx第三方库</h1><p><strong>执行以下命令进行安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ automake pcre pcre-devel zlib zlib-devel openssl openssl-develyum -y install gcc gcc-c++ automake</span><br></pre></td></tr></table></figure>
+
+<h1 id="下载Nginx解压包并解压"><a href="#下载Nginx解压包并解压" class="headerlink" title="下载Nginx解压包并解压"></a>下载Nginx解压包并解压</h1><ul>
+<li>在官网上直接下载   网址：<a target="_blank" rel="noopener" href="http://nginx.org/en/download.html" title="http://nginx.org/en/doload.html">http://nginx.org/en/doload.html</a></li>
+<li>在Linux服务器上下载  <code>wget http://nginx.org/download/nginx-1.26.1.tar.gz</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建nginx目录</span> </span><br><span class="line">mkdir /opt/nginx</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入nginx目录</span></span><br><span class="line">cd /opt/nginx </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载nginx解压包</span>  </span><br><span class="line">wget http://nginx.org/download/nginx-1.26.1.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解压文件</span></span><br><span class="line">tar -xvf nginx-1.26.1.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\32625\OneDrive\桌面\架构\前端\image\Nginx部署\1718097294696.png" alt="1718097294696"></p>
+<h1 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">opt/nginx文件夹下创建新文件夹Nginx-1.26.1_install</span></span><br><span class="line">cd /opt/nginx</span><br><span class="line">mkdir nginx-1.26.1_install</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入之前解压后得到的文件夹nginx-1.26.1</span></span><br><span class="line">cd nginx-1.26.1</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">运行configure脚本程序，可以直接运行./configure,也可以通过--prefix=path 指定nginx的安装目录</span></span><br><span class="line">./configure --prefix=/opt/nginx/nginx-1.26.1_install</span><br><span class="line"><span class="meta prompt_"> </span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">运行完成后,该文件夹下多出一个文件---Makefile，此时执行make指令进行源代码编译，编译过程中屏幕会有编译全过程</span></span><br><span class="line">make</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">编译完成后，执行make的install命令安装Nginx服务器</span></span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\32625\OneDrive\桌面\架构\前端\image\Nginx部署\1718098976187.png" alt="1718098976187"></p>
+<blockquote>
+<p>conf：该目录存放了Nginx的所有配置文件，该文件夹下包含nginx.conf文件，它是Nginx服务器的住配置文件，其他文件则是用    来配置Nginx的相关功能。</p>
+<p>html：该目录存放了Nginx服务器在运行过程中调用的一些html文件。</p>
+<p>logs：该目录存放了Nginx服务器的日志。</p>
+<p>sbin：该目录中只包含了一个文件-nginx，它就是Nginx服务器的主程序。</p>
+</blockquote>
+<h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">修改nginx.conf文件中的端口，改为81</span></span><br><span class="line">cd /opt/nginx/nginx-1.26.1_install/conf/</span><br><span class="line">vi nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\32625\OneDrive\桌面\架构\前端\image\Nginx部署\1718099504595.png" alt="1718099504595"></p>
+<h1 id="启动Nginx服务器"><a href="#启动Nginx服务器" class="headerlink" title="启动Nginx服务器"></a>启动Nginx服务器</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#在启动服务器之前，我们可以通过如下指令来查看Nginx服务器配置文件是否有语法错误：</span><br><span class="line">/opt/nginx/nginx-1.26.1_install/sbin/nginx -t</span><br><span class="line"></span><br><span class="line">#绝对路径</span><br><span class="line">/opt/nginx/nginx-1.26.1_install/sbin/nginx</span><br><span class="line"> </span><br><span class="line">#在nginx-1.26.1_install文件夹中时的相对路径</span><br><span class="line">./sbin/nginx -t</span><br><span class="line"> </span><br><span class="line">#通过如下指令可以查看Nginx服务器版本</span><br><span class="line">./sbin/nginx -v</span><br><span class="line"> </span><br><span class="line">#使用默认配置启动Nginx</span><br><span class="line">./sbin/nginx</span><br><span class="line"> </span><br><span class="line">#查看nginx进程状态</span><br><span class="line">ps -ef|grep nginx</span><br><span class="line"> </span><br><span class="line">#停止Nginx服务器</span><br><span class="line">#绝对路径</span><br><span class="line">/opt/nginx/Nginx-1.26.1_install/sbin/nginx -s stop</span><br><span class="line"> </span><br><span class="line">#Nginx-1.26.1_install文件夹下相对路径</span><br><span class="line">./sbin/nginx -s stop</span><br><span class="line"> </span><br><span class="line">#重启Nginx服务器</span><br><span class="line">/opt/nginx/Nginx-1.26.1_install/sbin/nginx -s reopen</span><br><span class="line"> </span><br><span class="line">#重新载入配置文件</span><br><span class="line">/opt/nginx/Nginx-1.26.1_install/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#需要关闭Linux服务器的防火墙</span><br><span class="line">systemctl stop firewall &amp;&amp;systemctl disbale firewalld</span><br><span class="line">http:192.168.10.100:81</span><br></pre></td></tr></table></figure>
+
+<p><img src="/image/Nginx%E9%83%A8%E7%BD%B2/1718100327425.png" alt="1718100327425"></p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/images/User/vavtarsheep.jpg" alt="CloudSheep">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>CloudSheep
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/" target="_blank">“Nginx部署”</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>不啻微芒，造炬成阳
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">hexo-blog</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
                         
-                            目前共计 11 篇日志，继续加油！
+                            <a href="/category/%E5%AE%9E%E6%88%98/">实战</a>
                         
-                    </span>
-                    
-                    
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
                         
-                            <div class="archive-title">
-                                <h2 class="archive-year">2024</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2024/06/14/%E6%9E%B6%E6%9E%84/"><span>“架构”</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">06-14</span>
-                                </div>
-                            </div>
-                        </div>
+                            <a href="/tag/nginx/">nginx</a>
+                        
+                            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/"><span>“Nginx部署”</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">06-14</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/2024/06/14/%E6%9E%B6%E6%9E%84/" class="prev-prefix">« </a> 上一篇：    <a href="/2024/06/14/%E6%9E%B6%E6%9E%84/" title="发布于 2024-06-14 04:25">“架构”</a>
+                        <br>
                     
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/2024/03/11/ceph/"><span>ceph</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">03-11</span>
-                                </div>
-                            </div>
-                        </div>
+                    
+                        <a href="/2024/03/11/ceph/" class="next-prefix">» </a> 下一篇：    <a href="/2024/03/11/ceph/" title="发布于 2024-03-11 09:39">ceph</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
+
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://waline.cloudsheep.xyz/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "I'm proud of myself...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
@@ -138,7 +246,7 @@
                     
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
-                        <li class=" active "><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
                     
                         <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
                     
