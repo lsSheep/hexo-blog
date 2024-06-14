@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            CloudSheep's Blog
+            Nginx虚拟主机的配置
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -33,373 +33,152 @@
 </head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/index.css">
-<div id="count"></div>
-<div id="header" >
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-title">CloudSheep</h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
+                <h1 class="header-subtitle">Nginx虚拟主机的配置</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2024-06-14
+                        </span>
+                        
+                            
+                                <span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/14/Nginx虚拟主机的配置/"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/14/Nginx虚拟主机的配置/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                    
+                        
+                            <span class="tag-color">nginx</span>
+                        
+                            <span class="tag-color">前端</span>
+                        
+                    
+                </div>
             
         </div>
     </div>
-    
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
     
 </div>
 <div id="container">
     
-        
-            <!-- 首页 -->
-            <div class="articles">
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <p><strong>在nginx的配置中，虚拟主机是一个重要概念，它允许单个nginx服务器为多个域名或IP地址提供服务，而不需要为每个域名或IP地址运行单独的nginx实例</strong></p>
+<h1 id="创建项目路径"><a href="#创建项目路径" class="headerlink" title="创建项目路径"></a>创建项目路径</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在根目录下创建统一项目路径 /www/worfcode</span></span><br><span class="line">cd /</span><br><span class="line">mkdir www</span><br><span class="line">cd  www/</span><br><span class="line">mkdir worfcode</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在worfcode中创建两个项目路径：项目一 caro2o/index.html、项目二 worf2w/index.html</span></span><br><span class="line">cd /www/worfcode</span><br><span class="line">mkdir &#123;caro2o,worf2w&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">在在项目一、项目二中的文件index.html中添加内容</span></span><br><span class="line">echo &#x27;&lt;h1&gt;CARO2O:Project I&lt;h1&gt;&#x27; &gt;index.html   #项目一</span><br><span class="line">echo &#x27;&lt;h1&gt;WORF2W:Project II&lt;h1&gt;&#x27; &gt;index.html  #项目二</span><br></pre></td></tr></table></figure>
+
+<h1 id="虚拟主机配置"><a href="#虚拟主机配置" class="headerlink" title="虚拟主机配置"></a>虚拟主机配置</h1><p>在配置文件 <code>/opt/nginx/nginx-1.26.1_install/conf/nginx.conf</code>中的 <code>server</code>项进行配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">打开nginx.conf配置文件</span></span><br><span class="line">vi /opt/nginx/nginx-1.26.1_install/conf/nginx.conf</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">找到 server 项进行编辑</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">虚拟主机的配置</span></span><br><span class="line">    server &#123;</span><br><span class="line">        listen       81;       #该虚拟主机监听的端口</span><br><span class="line">        server_name  caro2o.worfwode.cn;   #虚拟主机监听的域名/ip(此处时基于域名)</span><br><span class="line"></span><br><span class="line">        #charset koi8-r;</span><br><span class="line"></span><br><span class="line">        #access_log  logs/host.access.log  main;</span><br><span class="line">        #当请求到当前虚拟主机后，映射什么访问路径，/表示映射根路径请求到哪里</span><br><span class="line">        location / &#123;</span><br><span class="line">            root /www/worfcode/caro2o;  #表示访问当前路径时，访问哪个目录中的内容，html表示的是相对路径</span><br><span class="line">            index  index.html;  #当请求路径后面不携带任意文件时，默认访问的文件名（可以只保留一个）</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以利用本地hosts文件来使用域名访问</p>
+<p>根据上述配置可创建多台虚拟主机</p>
+</blockquote>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p><img src="C:\Users\32625\AppData\Roaming\Typora\typora-user-images\image-20240612152931067.png" alt="image-20240612152931067"></p>
+
                 
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/10/20/Dockerfile/">dockerfile</a>
-                            
-                                <span class="article-sticky">置顶</span>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：Docker——dockerfile
-                                <a href="/2023/10/20/Dockerfile/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-10-20
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/10/20/Dockerfile/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/10/20/Dockerfile/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/images/User/vavtarsheep.jpg" alt="CloudSheep">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>CloudSheep
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/" target="_blank">Nginx虚拟主机的配置</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>不啻微芒，造炬成阳
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">hexo-blog</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/nginx/">nginx</a>
+                        
+                            <a href="/tag/%E5%89%8D%E7%AB%AF/">前端</a>
+                        
                     </div>
                 
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/">Nginx虚拟主机的配置</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2024-06-14
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/14/Nginx虚拟主机的配置/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/14/Nginx虚拟主机的配置/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/">架构</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2024-06-14
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/14/架构基础理论/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/14/架构基础理论/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/">“Nginx部署”</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2024-06-14
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/14/Nginx部署/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/14/Nginx部署/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2024/03/11/ceph/">ceph</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2024-03-11
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/03/11/ceph/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/03/11/ceph/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/12/14/hello-world/">Hello World</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：Hexo
-                                <a href="/2023/12/14/hello-world/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-12-14
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/14/hello-world/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/14/hello-world/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/">OpenStack搭建</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：OpenStack—T版
-                                <a href="/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-12-13
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/13/OpenStack搭建/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/13/OpenStack搭建/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/">Kubernetes流程图</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：Kubernetes概览
-                                <a href="/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-12-12
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/12/Kubernetes流程图/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/12/Kubernetes流程图/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/12/12/Kubernetes%E8%AF%A6%E8%A7%A3/">Kubernetes详解</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：Kubernetes搭建
-                                <a href="/2023/12/12/Kubernetes%E8%AF%A6%E8%A7%A3/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-12-12
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/12/Kubernetes详解/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/12/Kubernetes详解/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
-                    <div class="article">
-                        <div class="article-title">
-                            <a href="/2023/12/12/OpenStack%E6%A0%B8%E5%BF%83%E9%A1%B9%E7%9B%AE%E6%BC%94%E5%8F%98/">OpenStack核心项目演变</a>
-                            
-                        </div>
-                        <div class="article-abstract">
-                            
-                                摘要：概览
-                                <a href="/2023/12/12/OpenStack%E6%A0%B8%E5%BF%83%E9%A1%B9%E7%9B%AE%E6%BC%94%E5%8F%98/">阅读全文</a>
-                            
-                        </div>
-                        <div class="clear"></div>
-                        <div class="article-info">
-                            <span>
-                                <i class="iconfont icon-time"></i> 发表时间：2023-12-12
-                            </span>
-                            
-                                
-                                    <span>
-                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/12/12/OpenStack核心项目演变/"></span>
-                                    </span>
-                                
-                                
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/12/12/OpenStack核心项目演变/"></span>
-                                    </span>
-                                
-                            
-                        </div>
-                        <div class="clear"></div>     
-                    </div>
-                
+                <div class="article-prev-next">
+                    
+                    
+                        <a href="/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/" class="next-prefix">» </a> 下一篇：    <a href="/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/" title="发布于 2024-06-14 04:25">架构</a>
+                    
+                </div>
             </div>
             
-                
-                    <script type="module">
-                        import { pageviewCount } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/pageview.mjs";
-                      
-                        pageviewCount({
-                          serverURL: "https://waline.cloudsheep.xyz/",
-                          path: window.location.pathname,
-                        });
-                    </script>
-                
-                
-                    <script type="module">
-                        import { commentCount } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/comment.mjs";
-                      
-                        commentCount({
-                          serverURL: "https://waline.cloudsheep.xyz/",
-                          path: window.location.pathname,
-                        });
-                    </script>
-                
-            
-            
+    <div class="article-comments">
         
-    <div class="pagination-bottom">
-        <div class="pagination">
-            
-                <a href="/page/2/">下一页</a>
-            
-        </div>
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
     </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
 
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://waline.cloudsheep.xyz/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "I'm proud of myself...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">
@@ -431,7 +210,7 @@
             <div class="menu-list">
                 <ul>
                     
-                        <li class=" active "><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
                     
                         <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
                     
