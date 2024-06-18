@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            部署Tomcat
+            分类 - 负载均衡
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -33,38 +33,15 @@
 </head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/post.css">
+    <link type="text/css" rel="stylesheet" href="/css/archive.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">部署Tomcat</h1>
+                <h1 class="header-subtitle">分类归档</h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text">
-                        <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2024-06-15
-                        </span>
-                        
-                            
-                                <span>
-                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2024/06/15/部署Tomcat/"></span>
-                                </span>
-                            
-                            
-                                <span>
-                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2024/06/15/部署Tomcat/"></span>
-                                </span>
-                              
-                        
-                    </p>
-                    
-                    
-                        
-                            <span class="tag-color">tomcat</span>
-                        
-                            <span class="tag-color">Java</span>
-                        
-                    
+                    <p class="article-info-text Chinese"></p>
+                    <p class="article-info-text English"></p>                  
                 </div>
             
         </div>
@@ -73,129 +50,37 @@
 </div>
 <div id="container">
     
-        <!-- 文章页面 -->
-        <div id="article">
-            <div class="toc"></div>
-            <div class="article-body">
-                <h1 id="部署准备"><a href="#部署准备" class="headerlink" title="部署准备"></a>部署准备</h1><h2 id="安装Java"><a href="#安装Java" class="headerlink" title="安装Java"></a>安装Java</h2><p>由于tomcat是基于Java的应用服务器，所以在安装tomcat之前，需要在Linux服务器上部署Java环境</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">更新yum源</span></span><br><span class="line">yum unpate</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载openJDK（可根据需求选择不同版本）</span></span><br><span class="line">sudo yum install java-11-openjdk-devel</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">验证是否安装完成</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure>
-
-<h1 id="部署tomcat"><a href="#部署tomcat" class="headerlink" title="部署tomcat"></a>部署tomcat</h1><h2 id="下载tomcat解压包"><a href="#下载tomcat解压包" class="headerlink" title="下载tomcat解压包"></a>下载tomcat解压包</h2><ul>
-<li>进如tomcat官网 <code>https://tomcat.apache.org/</code> 选择所需要的版本进行下载</li>
-</ul>
-<blockquote>
-<p>下载完成后，利用远程终端工具将下载的解压包上传至Linux服务器中</p>
-</blockquote>
-<ul>
-<li>利用Linux服务器的 <code>wget</code> 命令直接下载（根据需求选择不同版本进行下载，这里以 <code>tomcat-9.0.89</code> 为例</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用wget命令下载tomcat</span></span><br><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建目录存放tomcat解压后的文件</span></span><br><span class="line">mkdir /opt/tomcat</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">解压tomcat</span></span><br><span class="line">tar -xzf apache-tomcat-9.0.89.tar.gzq -C /opt/tomcat</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置运行环境（可选）"><a href="#配置运行环境（可选）" class="headerlink" title="配置运行环境（可选）"></a>配置运行环境（可选）</h2><p>为了方便使用可以将tomcat的  <code>bin</code> 目录添加到系统的 <code>PATH</code> 环境变量中，可以通过编辑 <code>.bashrc</code> 文件实现</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">进入.bashrc文件进行编辑</span></span><br><span class="line">vi /root/.bashrc</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">添加以下内容</span></span><br><span class="line">export CATALINA_HOME=/opt/tomcat  </span><br><span class="line">export PATH=$CATALINA_HOME/bin:$PATH</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行、停止tomcat"><a href="#运行、停止tomcat" class="headerlink" title="运行、停止tomcat"></a>运行、停止tomcat</h2><p>运行tomcat  <code>bin</code> 目录下的 <code>startup.sh</code> 脚本文件启动tomcat</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">./startup.sh </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">显示以下内容表示tomcat启动成功</span></span><br><span class="line">Using CATALINA_BASE:   /opt/tomcat/apache-tomcat-9.0.89</span><br><span class="line">Using CATALINA_HOME:   /opt/tomcat/apache-tomcat-9.0.89</span><br><span class="line">Using CATALINA_TMPDIR: /opt/tomcat/apache-tomcat-9.0.89/temp</span><br><span class="line">Using JRE_HOME:        /usr</span><br><span class="line">Using CLASSPATH:       /opt/tomcat/apache-tomcat-9.0.89/bin/bootstrap.jar:/opt/tomcat/apache-tomcat-9.0.89/bin/tomcat-juli.jar</span><br><span class="line">Using CATALINA_OPTS:   </span><br><span class="line">Tomcat started.</span><br></pre></td></tr></table></figure>
-
-<p>运行tomcat  <code>bin</code> 目录下的 <code>shutdown.sh</code> 脚本文件关闭tomcat</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">。/shutdown.sh</span><br></pre></td></tr></table></figure>
-
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><p>在主机浏览器中输入 <code>https://&lt;服务器主机IP&gt;:8080</code> 进行验证（tomcat服务器默认端口为8080，若需要使用其他端口号可以编辑tomcat配置文件 <code>server.xml</code> 进行修改）</p>
-<p><img src="C:\Users\32625\AppData\Roaming\Typora\typora-user-images\image-20240614191758558.png" alt="image-20240614191758558"></p>
-
-                
-                <p class="end">__END__</p>
-            </div>
-            <div class="article-footer">
-                <div class="suffix-box">
-    <div class="suffix-box-left">
-        <img src="/images/User/vavtarsheep.jpg" alt="CloudSheep">
-    </div>
-    <div class="suffix-box-right">
-        <span class="suffix-box-title">文章作者：</span>CloudSheep
-        <br>
-        <span class="suffix-box-title">文章出处：</span><a href="/2024/06/15/%E9%83%A8%E7%BD%B2Tomcat/" target="_blank">部署Tomcat</a>
-        <br>
-        <span class="suffix-box-title">作者签名：</span>不啻微芒，造炬成阳
-        <br>
-        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/lsSheep/hexo-blog.git" target="_blank">hexo-blog</a>
-        <br>
-        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
-        <br>
-    </div>
-    <div style="clear: both;"></div>
-</div>
-                
-                
-                    <div class="tag">
-                        标签：
+        
+            <!-- 归档页面、分类归档页面、标签归档页面 -->
+            <div class="articles">
+                <div class="articles-wrap">
+                    <span class="archive-move-on"></span>
+                    <span class="archive-counter">
                         
-                            <a href="/tag/tomcat/">tomcat</a>
+                            当前分类：<span class="category">负载均衡</span>
                         
-                            <a href="/tag/Java/">Java</a>
-                        
-                    </div>
-                
-                <div class="article-prev-next">
-                    
-                        <a href="/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/" class="prev-prefix">« </a> 上一篇：    <a href="/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/" title="发布于 2024-06-18 09:30">部署Nginx+KeepAlived高可用集群</a>
-                        <br>
+                    </span>
                     
                     
-                        <a href="/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/" class="next-prefix">» </a> 下一篇：    <a href="/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/" title="发布于 2024-06-14 04:35">Nginx虚拟主机的配置</a>
+                        
+                            <div class="archive-title">
+                                <h2 class="archive-year">2024</h2>
+                            </div>
+                            
+                           
+                        <div class="article">
+                            <div class="article-header">
+                                <h1 class="article-title"><a href="/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/"><span>部署Nginx+KeepAlived高可用集群</span></a></h1>
+                                <div class="article-meta">
+                                    <span class="article-time">06-18</span>
+                                </div>
+                            </div>
+                        </div>
                     
                 </div>
             </div>
             
-    <div class="article-comments">
         
-            <div class="comments-title">
-                评论列表
-            </div>
-        
-        <div class="comments-content"></div>
-    </div>
-    
-        <!-- 样式文件 -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
-        <!-- 脚本文件 -->
-        <script type="module">
-            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
-
-            const WalineInstance = init({
-                el              : ".comments-content",
-                serverURL       : "https://waline.cloudsheep.xyz/",
-                path            : window.location.pathname,
-                meta            : ['nick', 'mail', 'link'],
-                requiredMeta    : ['nick', 'mail'],
-                pageSize        : 10,
-                lang            : "zh-cn",
-                locale: {
-                    admin       : "博主",
-                    anonymous   : "匿名用户",
-                    sofa        : "快来做第一个评论的人吧 ~",
-                    placeholder : "I'm proud of myself...",
-                },
-                dark            : "html[color-scheme='dark']",
-                search          : false,
-                pageview        : true,
-                comment         : true,
-                copyright       : false,
-            });
-
-            // Waline 输入框选中动画
-            $(document).on("focus", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
-            });
-
-            $(document).on("blur", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
-            });
-        </script>
-    
- 
-        </div>
     
 </div>
     <div id="footer">
