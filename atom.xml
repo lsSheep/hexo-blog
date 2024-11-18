@@ -3,11 +3,11 @@
   <title>CloudSheep&#39;s Blog</title>
   
   <subtitle>Sheep</subtitle>
-  <link href="http://cloudsheep.xyz/atom.xml" rel="self"/>
+  <link href="http://lssheepcloud.cn/atom.xml" rel="self"/>
   
-  <link href="http://cloudsheep.xyz/"/>
+  <link href="http://lssheepcloud.cn/"/>
   <updated>2024-06-18T13:39:00.842Z</updated>
-  <id>http://cloudsheep.xyz/</id>
+  <id>http://lssheepcloud.cn/</id>
   
   <author>
     <name>sheep</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>部署KeepAlived</title>
-    <link href="http://cloudsheep.xyz/2024/06/18/%E9%83%A8%E7%BD%B2KeepAlived/"/>
-    <id>http://cloudsheep.xyz/2024/06/18/%E9%83%A8%E7%BD%B2KeepAlived/</id>
+    <link href="http://lssheepcloud.cn/2024/06/18/%E9%83%A8%E7%BD%B2KeepAlived/"/>
+    <id>http://lssheepcloud.cn/2024/06/18/%E9%83%A8%E7%BD%B2KeepAlived/</id>
     <published>2024-06-18T13:36:00.000Z</published>
     <updated>2024-06-18T13:39:00.842Z</updated>
     
@@ -33,19 +33,19 @@
     
     
     
-    <category term="负载均衡" scheme="http://cloudsheep.xyz/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <category term="负载均衡" scheme="http://lssheepcloud.cn/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     
     
-    <category term="前端" scheme="http://cloudsheep.xyz/tag/%E5%89%8D%E7%AB%AF/"/>
+    <category term="前端" scheme="http://lssheepcloud.cn/tag/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="keepalived" scheme="http://cloudsheep.xyz/tag/keepalived/"/>
+    <category term="keepalived" scheme="http://lssheepcloud.cn/tag/keepalived/"/>
     
   </entry>
   
   <entry>
     <title>部署Nginx+KeepAlived高可用集群</title>
-    <link href="http://cloudsheep.xyz/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/"/>
-    <id>http://cloudsheep.xyz/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/</id>
+    <link href="http://lssheepcloud.cn/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/"/>
+    <id>http://lssheepcloud.cn/2024/06/18/%E9%83%A8%E7%BD%B2Nginx-KeepAlived%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/</id>
     <published>2024-06-18T13:30:06.000Z</published>
     <updated>2024-06-18T13:38:58.524Z</updated>
     
@@ -59,21 +59,21 @@
     
     
     
-    <category term="负载均衡" scheme="http://cloudsheep.xyz/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <category term="负载均衡" scheme="http://lssheepcloud.cn/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     
     
-    <category term="前端" scheme="http://cloudsheep.xyz/tag/%E5%89%8D%E7%AB%AF/"/>
+    <category term="nginx" scheme="http://lssheepcloud.cn/tag/nginx/"/>
     
-    <category term="nginx" scheme="http://cloudsheep.xyz/tag/nginx/"/>
+    <category term="前端" scheme="http://lssheepcloud.cn/tag/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="keepalived" scheme="http://cloudsheep.xyz/tag/keepalived/"/>
+    <category term="keepalived" scheme="http://lssheepcloud.cn/tag/keepalived/"/>
     
   </entry>
   
   <entry>
     <title>部署Tomcat</title>
-    <link href="http://cloudsheep.xyz/2024/06/15/%E9%83%A8%E7%BD%B2Tomcat/"/>
-    <id>http://cloudsheep.xyz/2024/06/15/%E9%83%A8%E7%BD%B2Tomcat/</id>
+    <link href="http://lssheepcloud.cn/2024/06/15/%E9%83%A8%E7%BD%B2Tomcat/"/>
+    <id>http://lssheepcloud.cn/2024/06/15/%E9%83%A8%E7%BD%B2Tomcat/</id>
     <published>2024-06-15T12:31:18.000Z</published>
     <updated>2024-06-18T13:41:05.236Z</updated>
     
@@ -88,16 +88,16 @@
     
     
     
-    <category term="tomcat" scheme="http://cloudsheep.xyz/tag/tomcat/"/>
+    <category term="tomcat" scheme="http://lssheepcloud.cn/tag/tomcat/"/>
     
-    <category term="Java" scheme="http://cloudsheep.xyz/tag/Java/"/>
+    <category term="Java" scheme="http://lssheepcloud.cn/tag/Java/"/>
     
   </entry>
   
   <entry>
     <title>Nginx虚拟主机的配置</title>
-    <link href="http://cloudsheep.xyz/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
-    <id>http://cloudsheep.xyz/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</id>
+    <link href="http://lssheepcloud.cn/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
+    <id>http://lssheepcloud.cn/2024/06/14/Nginx%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA%E7%9A%84%E9%85%8D%E7%BD%AE/</id>
     <published>2024-06-14T08:35:53.000Z</published>
     <updated>2024-06-18T13:40:07.072Z</updated>
     
@@ -113,16 +113,16 @@
     
     
     
-    <category term="nginx进阶" scheme="http://cloudsheep.xyz/tag/nginx%E8%BF%9B%E9%98%B6/"/>
+    <category term="前端" scheme="http://lssheepcloud.cn/tag/%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="前端" scheme="http://cloudsheep.xyz/tag/%E5%89%8D%E7%AB%AF/"/>
+    <category term="nginx进阶" scheme="http://lssheepcloud.cn/tag/nginx%E8%BF%9B%E9%98%B6/"/>
     
   </entry>
   
   <entry>
     <title>架构</title>
-    <link href="http://cloudsheep.xyz/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
-    <id>http://cloudsheep.xyz/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</id>
+    <link href="http://lssheepcloud.cn/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/"/>
+    <id>http://lssheepcloud.cn/2024/06/14/%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA/</id>
     <published>2024-06-14T08:25:20.000Z</published>
     <updated>2024-06-14T08:34:40.329Z</updated>
     
@@ -137,14 +137,14 @@
     
     
     
-    <category term="架构" scheme="http://cloudsheep.xyz/tag/%E6%9E%B6%E6%9E%84/"/>
+    <category term="架构" scheme="http://lssheepcloud.cn/tag/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Nginx部署</title>
-    <link href="http://cloudsheep.xyz/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/"/>
-    <id>http://cloudsheep.xyz/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/</id>
+    <link href="http://lssheepcloud.cn/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/"/>
+    <id>http://lssheepcloud.cn/2024/06/14/Nginx%E9%83%A8%E7%BD%B2/</id>
     <published>2024-06-14T08:24:58.000Z</published>
     <updated>2024-06-18T13:40:30.512Z</updated>
     
@@ -159,19 +159,19 @@
     
     
     
-    <category term="负载均衡" scheme="http://cloudsheep.xyz/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
+    <category term="负载均衡" scheme="http://lssheepcloud.cn/category/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/"/>
     
     
-    <category term="前端" scheme="http://cloudsheep.xyz/tag/%E5%89%8D%E7%AB%AF/"/>
+    <category term="nginx" scheme="http://lssheepcloud.cn/tag/nginx/"/>
     
-    <category term="nginx" scheme="http://cloudsheep.xyz/tag/nginx/"/>
+    <category term="前端" scheme="http://lssheepcloud.cn/tag/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
   <entry>
     <title>ceph</title>
-    <link href="http://cloudsheep.xyz/2024/03/11/ceph/"/>
-    <id>http://cloudsheep.xyz/2024/03/11/ceph/</id>
+    <link href="http://lssheepcloud.cn/2024/03/11/ceph/"/>
+    <id>http://lssheepcloud.cn/2024/03/11/ceph/</id>
     <published>2024-03-11T01:39:09.000Z</published>
     <updated>2024-06-14T08:29:12.711Z</updated>
     
@@ -185,19 +185,19 @@
     
     
     
-    <category term="教程" scheme="http://cloudsheep.xyz/category/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="http://lssheepcloud.cn/category/%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="ceph" scheme="http://cloudsheep.xyz/tag/ceph/"/>
+    <category term="ceph" scheme="http://lssheepcloud.cn/tag/ceph/"/>
     
-    <category term="存储" scheme="http://cloudsheep.xyz/tag/%E5%AD%98%E5%82%A8/"/>
+    <category term="存储" scheme="http://lssheepcloud.cn/tag/%E5%AD%98%E5%82%A8/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://cloudsheep.xyz/2023/12/14/hello-world/"/>
-    <id>http://cloudsheep.xyz/2023/12/14/hello-world/</id>
+    <link href="http://lssheepcloud.cn/2023/12/14/hello-world/"/>
+    <id>http://lssheepcloud.cn/2023/12/14/hello-world/</id>
     <published>2023-12-14T03:20:05.489Z</published>
     <updated>2023-12-10T06:48:56.102Z</updated>
     
@@ -208,17 +208,17 @@
     
     
     
-    <category term="其他" scheme="http://cloudsheep.xyz/category/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="http://lssheepcloud.cn/category/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="hello-world" scheme="http://cloudsheep.xyz/tag/hello-world/"/>
+    <category term="hello-world" scheme="http://lssheepcloud.cn/tag/hello-world/"/>
     
   </entry>
   
   <entry>
     <title>OpenStack搭建</title>
-    <link href="http://cloudsheep.xyz/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/"/>
-    <id>http://cloudsheep.xyz/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/</id>
+    <link href="http://lssheepcloud.cn/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/"/>
+    <id>http://lssheepcloud.cn/2023/12/13/OpenStack%E6%90%AD%E5%BB%BA/</id>
     <published>2023-12-13T06:22:33.000Z</published>
     <updated>2024-03-12T09:33:00.215Z</updated>
     
@@ -229,19 +229,19 @@
     
     
     
-    <category term="教程" scheme="http://cloudsheep.xyz/category/%E6%95%99%E7%A8%8B/"/>
+    <category term="教程" scheme="http://lssheepcloud.cn/category/%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="OpenStack" scheme="http://cloudsheep.xyz/tag/OpenStack/"/>
+    <category term="OpenStack" scheme="http://lssheepcloud.cn/tag/OpenStack/"/>
     
-    <category term="运维" scheme="http://cloudsheep.xyz/tag/%E8%BF%90%E7%BB%B4/"/>
+    <category term="运维" scheme="http://lssheepcloud.cn/tag/%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
   <entry>
     <title>Kubernetes流程图</title>
-    <link href="http://cloudsheep.xyz/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
-    <id>http://cloudsheep.xyz/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/</id>
+    <link href="http://lssheepcloud.cn/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
+    <id>http://lssheepcloud.cn/2023/12/12/Kubernetes%E6%B5%81%E7%A8%8B%E5%9B%BE/</id>
     <published>2023-12-12T06:34:14.000Z</published>
     <updated>2023-12-13T07:09:45.222Z</updated>
     
@@ -252,12 +252,12 @@
     
     
     
-    <category term="流程图" scheme="http://cloudsheep.xyz/category/%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
+    <category term="流程图" scheme="http://lssheepcloud.cn/category/%E6%B5%81%E7%A8%8B%E5%9B%BE/"/>
     
     
-    <category term="Kubernetes" scheme="http://cloudsheep.xyz/tag/Kubernetes/"/>
+    <category term="Kubernetes" scheme="http://lssheepcloud.cn/tag/Kubernetes/"/>
     
-    <category term="画图详解" scheme="http://cloudsheep.xyz/tag/%E7%94%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3/"/>
+    <category term="画图详解" scheme="http://lssheepcloud.cn/tag/%E7%94%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3/"/>
     
   </entry>
   
