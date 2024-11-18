@@ -232,9 +232,9 @@
     <category term="教程" scheme="http://lssheepcloud.cn/category/%E6%95%99%E7%A8%8B/"/>
     
     
-    <category term="OpenStack" scheme="http://lssheepcloud.cn/tag/OpenStack/"/>
-    
     <category term="运维" scheme="http://lssheepcloud.cn/tag/%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="OpenStack" scheme="http://lssheepcloud.cn/tag/OpenStack/"/>
     
   </entry>
   
