@@ -46,13 +46,13 @@
                         </span>
                         
                             
-                                <span>
-                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/2023/10/17/Docker/"></span>
+                                <span id="/2023/10/17/Docker/" class="leancloud_visitors" data-flag-title="Docker">
+                                    <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                                 </span>
                             
                             
                                 <span>
-                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/10/17/Docker/"></span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2023/10/17/Docker/"></span>
                                 </span>
                               
                         
@@ -168,44 +168,6 @@
         
         <div class="comments-content"></div>
     </div>
-    
-        <!-- 样式文件 -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline.css"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/waline-custom.css"/>
-        <!-- 脚本文件 -->
-        <script type="module">
-            import { init } from "https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/waline.mjs";
-
-            const WalineInstance = init({
-                el              : ".comments-content",
-                serverURL       : "https://waline.lssheepcloud.cn/",
-                path            : window.location.pathname,
-                meta            : ['nick', 'mail', 'link'],
-                requiredMeta    : ['nick', 'mail'],
-                pageSize        : 10,
-                lang            : "zh-cn",
-                locale: {
-                    admin       : "博主",
-                    anonymous   : "匿名用户",
-                    sofa        : "快来做第一个评论的人吧 ~",
-                    placeholder : "I'm proud of myself...",
-                },
-                dark            : "html[color-scheme='dark']",
-                search          : false,
-                pageview        : true,
-                comment         : true,
-                copyright       : false,
-            });
-
-            // Waline 输入框选中动画
-            $(document).on("focus", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
-            });
-
-            $(document).on("blur", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
-            });
-        </script>
     
  
         </div>
@@ -708,7 +670,7 @@
 
         Comment : {
             switch : true,
-            type   : "Waline",
+            type   : "Valine",
         },
 
         Waline : {
@@ -734,8 +696,8 @@
 
         Valine : {
             el             : ".comments-content",
-            appId          : "srhKtvWPQTWYKh3qX8G8M7v0-gzGzoHsz",
-            appKey         : "8uVSP1q6UlALVC5igYfIfv2h",
+            appId          : "0NjmzEHCy6prmL25oPftFKt9-MdYXbMMI",
+            appKey         : "JVymCpe54YSYNGEZ5s8Zf4Xz",
             serverURLs     : "",
             placeholder    : "你是我一生只会遇见一次的惊喜...",
             avatar         : "mm",
