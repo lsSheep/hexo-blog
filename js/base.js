@@ -941,6 +941,29 @@ function Base() {
                     enableQQ       : window.config.Valine.enableQQ
                 });
             });
+        } else {
+            // Waline 评论初始化
+            if (document.querySelector(window.config.Waline.el)) {
+                import(window.config.Script.waline).then(function(module) {
+                    module.init({
+                        el: window.config.Waline.el,
+                        serverURL: window.config.Waline.serverURL,
+                        path: window.location.pathname,
+                        meta: ['nick', 'mail', 'link'],
+                        requiredMeta: ['nick', 'mail'],
+                        pageSize: window.config.Waline.pageSize,
+                        lang: window.config.Waline.lang,
+                        locale: window.config.Waline.locale,
+                        dark: window.config.Waline.dark,
+                        search: window.config.Waline.search,
+                        pageview: window.config.Waline.pageview,
+                        comment: window.config.Waline.comment,
+                        copyright: window.config.Waline.copyright
+                    });
+                }).catch(function(err) {
+                    console.error('Waline 评论加载失败:', err);
+                });
+            }
         }
 
         script.clearIntervalTimer(timers.setCommentsTimer);    
