@@ -3,6 +3,12 @@ function Base() {
     const script              = this,
           tools               = new websiteTools,
           progressBar         = new ToProgress(window.config.ProgressBar, '.progressbar-top'),
+          // CDN 图片加速 (jsdelivr 全球 750+ 节点)
+          cdnBase             = 'https://cdn.jsdelivr.net/gh/MIutopia/hexo-blog@master',
+          toCdn               = function(url) {
+              if (!url || url.indexOf('http') === 0) return url;
+              return cdnBase + url;
+          },
           rootElement         = document.documentElement,
           modeAttributeName   = 'color-scheme',
           modeLocalStorageKey = 'color-scheme',
@@ -586,7 +592,7 @@ function Base() {
             (homeHeaderImage.length > 1 ? backImage = homeHeaderImage[tools.randomNum(0, homeHeaderImage.length - 1)] : backImage = homeHeaderImage[0])
             : backImage = '';
         $('#header').css({
-            'background': '#222 url(' + backImage + ')  center center no-repeat',
+            'background': '#222 url(' + toCdn(backImage) + ')  center center no-repeat',
             'background-size': 'cover'
         });
 
@@ -793,7 +799,7 @@ function Base() {
 
 
         $('#header').css({
-            'background': '#222 url(' + backImage + ')  center center no-repeat',
+            'background': '#222 url(' + toCdn(backImage) + ')  center center no-repeat',
             'background-size': 'cover'
         });
     };
