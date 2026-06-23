@@ -13,17 +13,30 @@
         
     </title>
     <link rel="shortcut icon" href="#"/>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
+    <!-- 关键中文字体同步加载 -->
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.min.css">
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSansSC.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/NotoSerifSC.min.css">
+    <!-- 其余字体异步加载，不阻塞渲染 -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Roboto.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.min.css" media="print" onload="this.media='all'">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.min.css" media="print" onload="this.media='all'">
+    <noscript>
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Monda.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Playball.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/PTMono.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Roboto.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/RobotoSlab.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.min.css">
+    </noscript>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/base.min.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/code.min.css">
@@ -267,7 +280,7 @@
     
 </div>
     <div id="footer">
-    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【生活枯燥无味<span><i class='iconfont icon-like-fill'></i></span>早八谋杀人类】</div><div>&copy; 2023-2023 CLOUDSHEEP, All Rights Reserved.</div>
+    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【生活枯燥无味<span><i class='iconfont icon-like-fill'></i></span>早八谋杀人类】</div><div>&copy; 2023-2026 CLOUDSHEEP, All Rights Reserved.</div>
 </div>
     <div id="sidebar">
     <div class="menu-wrap" style="display:none;">
@@ -282,12 +295,12 @@
         <nav class="menu">
             <div class="menu-introduce"> 
                 <div class="introduce-avatar">
-                    <img src="/images/User/vavtarsheep.jpg">
+                    <img src="/images/User/vavtarsheep.jpg" loading="lazy" alt="avatar">
                 </div> 
                 <div class="introduce-info"> 
                     <div class="introduce-user">
                         
-                            <a href="https://lssheepcloud.cn" target="_blank"><span>CloudSheep</span></a>
+                            <a href="https://cloudetopia.top" target="_blank"><span>CloudSheep</span></a>
                         
                     </div>
                 </div> 
@@ -326,7 +339,7 @@
                 
                     <a name="微信" href="javascript:;" class="" target="_self" data=""><span class="iconfont icon-wechat"></span></a>
                 
-                    <a name="GitHub" href="https://github.com/lsSheep" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                    <a name="GitHub" href="https://github.com/MIutopia" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
                 
             </div> 
         </nav>
@@ -341,8 +354,8 @@
     <div class="menu-cover"></div>
 </div>
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/search.min.css">
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/iscroll.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/instantsearch.min.js" defer></script>
 <div class="search-window">
     <div class="search-content">
         <div class="search-content-icon">
@@ -367,8 +380,8 @@
     <div class="progressbar-top"></div>
     
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/APlayer.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/APlayer.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/Meting.min.js" defer></script>
     <script>
         var meting_api = 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&auth=:auth&r=:r';
     </script>
@@ -434,13 +447,13 @@
 </div>
     <script>
     window.config = {
-        GitHubUserName     : "lsSheep",
+        GitHubUserName     : "MIutopia",
         GitHubRepositories : "hexo-blog",
 
         User             : "CloudSheep",
         UserAvatar       : "/images/User/vavtarsheep.jpg",
         WebsiteStartDate : "2023-10-17",
-        Home             : "https://lssheepcloud.cn",
+        Home             : "https://cloudetopia.top",
 
         WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Sheep",
         WebsiteTitleBlurTimeOut  : 500,
@@ -690,7 +703,7 @@
                     {
                         name   : "GitHub",
                         icon   : "icon-github",
-                        href   : "https://github.com/lsSheep",
+                        href   : "https://github.com/MIutopia",
                         class  : "",
                         target : "_blank",
                         image  : ""
@@ -700,7 +713,7 @@
         ],
 
         FooterStyle : 2,
-        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【生活枯燥无味<span><i class='iconfont icon-like-fill'></i></span>早八谋杀人类】</div><div>&copy; 2023-2023 CLOUDSHEEP, All Rights Reserved.</div>",
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【生活枯燥无味<span><i class='iconfont icon-like-fill'></i></span>早八谋杀人类】</div><div>&copy; 2023-2026 CLOUDSHEEP, All Rights Reserved.</div>",
 
         ConsoleList : [
             
@@ -927,7 +940,7 @@
         },
             
         Theme : {
-            url  : "https://github.com/lsSheep/hexo-blog.git",
+            url  : "https://github.com/MIutopia/hexo-blog.git",
             name : "hexo-blog"
         }  
     };
