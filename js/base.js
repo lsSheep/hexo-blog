@@ -941,8 +941,35 @@ function Base() {
                     enableQQ       : window.config.Valine.enableQQ
                 });
             });
+        } else if (window.config.Comment.type == "Giscus") {
+            // Giscus 评论初始化（基于 GitHub Discussions）
+            if (!document.querySelector('.giscus')) {
+                var container = document.querySelector('.article-body');
+                if (container) {
+                    var giscusDiv = document.createElement('div');
+                    giscusDiv.className = 'giscus';
+                    container.parentNode.appendChild(giscusDiv);
+
+                    var script = document.createElement('script');
+                    script.src = 'https://giscus.app/client.js';
+                    script.setAttribute('data-repo', window.config.Giscus.repo);
+                    script.setAttribute('data-repo-id', window.config.Giscus.repoId);
+                    script.setAttribute('data-category', window.config.Giscus.category);
+                    script.setAttribute('data-category-id', window.config.Giscus.categoryId);
+                    script.setAttribute('data-mapping', 'pathname');
+                    script.setAttribute('data-strict', '0');
+                    script.setAttribute('data-reactions-enabled', '1');
+                    script.setAttribute('data-emit-metadata', '0');
+                    script.setAttribute('data-input-position', 'bottom');
+                    script.setAttribute('data-theme', window.config.Giscus.theme);
+                    script.setAttribute('data-lang', 'zh-CN');
+                    script.setAttribute('crossorigin', 'anonymous');
+                    script.async = true;
+                    giscusDiv.appendChild(script);
+                }
+            }
         } else {
-            // Waline 评论初始化
+            // Waline 评论初始化（保留兼容）
             if (document.querySelector(window.config.Waline.el)) {
                 import(window.config.Script.waline).then(function(module) {
                     module.init({
