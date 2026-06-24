@@ -1,69 +1,53 @@
 /**
- * 页面阅读计数器 v5.1 - OpenKounter (EdgeOne Pages)
+ * 页面阅读计数器 v5.2 - OpenKounter compatible
  */
 (function() {
   'use strict';
-
   var script = document.currentScript;
-  var SERVER = script ? script.getAttribute('data-server') : null;
-  var CDN_JSON = 'https://cdn.jsdelivr.net/gh/MIutopia/hexo-blog@master/data/pageviews.json';
+  var S = script ? script.getAttribute('data-server') : null;
 
-  function apiGet(path) {
-    return fetch(SERVER + '/api/counter?path=' + encodeURIComponent(path))
+  function apiGet(p) {
+    return fetch(S + '/api/counter?target=' + encodeURIComponent(p))
       .then(function(r) { return r.json(); })
-      .then(function(d) { return d.count || 0; })
+      .then(function(d) { return (d.data && d.data.time) || d.count || 0; })
       .catch(function() { return 0; });
   }
-
-  function apiInc(path) {
-    return fetch(SERVER + '/api/counter', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'inc', target: path })
+  function apiInc(p) {
+    return fetch(S + '/api/counter', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({action:'inc',target:p})
     })
       .then(function(r) { return r.json(); })
-      .then(function(d) { return d.count || null; })
+      .then(function(d) { return (d.data && d.data.time) || d.count || null; })
       .catch(function() { return null; });
   }
 
   window.PageView = {
-    increment: function(path) {
-      path = path || window.location.pathname;
-      if (SERVER) return apiInc(path);
-      return Promise.resolve(null);
-    },
-    get: function(path) {
-      path = path || window.location.pathname;
-      if (SERVER) return apiGet(path);
-      return Promise.resolve(0);
-    },
+    increment: function(p) { p = p || window.location.pathname; return S ? apiInc(p) : Promise.resolve(null); },
     fillCounts: function() {
-      var elements = document.querySelectorAll('.pageview-count');
-      if (elements.length === 0) return;
-      if (SERVER) {
+      var el = document.querySelectorAll('.pageview-count');
+      if (!el.length) return;
+      if (S) {
         var ps = [];
-        for (var i = 0; i < elements.length; i++) ps.push(apiGet(elements[i].getAttribute('data-path') || window.location.pathname));
-        Promise.all(ps).then(function(c) { for (var i = 0; i < elements.length; i++) elements[i].textContent = c[i] || '0'; });
+        for (var i = 0; i < el.length; i++) ps.push(apiGet(el[i].getAttribute('data-path') || location.pathname));
+        Promise.all(ps).then(function(c) { for (var i = 0; i < el.length; i++) el[i].textContent = c[i] || '0'; });
       } else {
-        fetch(CDN_JSON).then(function(r) { return r.json(); }).then(function(d) {
-          for (var i = 0; i < elements.length; i++) elements[i].textContent = (d && d[elements[i].getAttribute('data-path') || '']) || '0';
-        }).catch(function() { for (var i = 0; i < elements.length; i++) elements[i].textContent = '0'; });
+        fetch('https://cdn.jsdelivr.net/gh/MIutopia/hexo-blog@master/data/pageviews.json')
+          .then(function(r) { return r.json(); })
+          .then(function(d) { for (var i = 0; i < el.length; i++) el[i].textContent = (d && d[el[i].getAttribute('data-path') || '']) || '0'; })
+          .catch(function() { for (var i = 0; i < el.length; i++) el[i].textContent = '0'; });
       }
     }
   };
 
   function init() {
     PageView.fillCounts();
-    if (document.querySelector('.article-body') && SERVER) {
-      PageView.increment().then(function(count) {
-        if (count !== null) {
-          var el = document.querySelectorAll('.pageview-count');
-          for (var i = 0; i < el.length; i++) el[i].textContent = count;
-        }
+    if (document.querySelector('.article-body') && S) {
+      PageView.increment().then(function(c) {
+        if (c !== null) { var el = document.querySelectorAll('.pageview-count'); for (var i = 0; i < el.length; i++) el[i].textContent = c; }
       });
     }
   }
-
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
