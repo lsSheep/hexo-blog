@@ -1,68 +1,49 @@
 /**
- * 页面阅读计数器 v4.0
+ * 页面阅读计数器 v5.0
  * 
- * 后端: Cloudflare Worker + KV
- * API:
- *   GET /?path=/post-path       → {"path":"...", "count":5}
- *   GET /?path=/post-path&inc=1 → {"path":"...", "count":6}
- * 
- * Worker URL 通过 script 标签的 data-worker 属性配置:
- *   <script src="/js/pageview-tracker.js" data-worker="https://xxx.workers.dev"></script>
+ * 后端: OpenKounter (EdgeOne Pages)
+ * API: GET /api/counter?target=/path       → {"code":0,"data":{"time":5,...}}
+ *       POST /api/counter {"action":"inc","target":"/path"} → {"code":0,"data":{"time":6,...}}
+ *
+ * 配置: <script src="/js/pageview-tracker.js" data-server="https://xxx.edgeone.cool"></script>
  */
 
 (function() {
   'use strict';
 
   var script = document.currentScript;
-  var WORKER = script ? script.getAttribute('data-worker') : null;
-  // jsdelivr CDN 静态 JSON 作为降级方案
+  var SERVER = script ? script.getAttribute('data-server') : null;
   var CDN_JSON = 'https://cdn.jsdelivr.net/gh/MIutopia/hexo-blog@master/data/pageviews.json';
-  var _data = null;
 
-  // ===== Worker API (实时) =====
-  function workerGet(path) {
-    return fetch(WORKER + '/?path=' + encodeURIComponent(path))
+  function apiGet(path) {
+    return fetch(SERVER + '/api/counter?target=' + encodeURIComponent(path))
       .then(function(r) { return r.json(); })
-      .then(function(d) { return d.count; })
+      .then(function(d) { return d.data ? d.data.time : 0; })
       .catch(function() { return 0; });
   }
 
-  function workerInc(path) {
-    return fetch(WORKER + '/?path=' + encodeURIComponent(path) + '&inc=1')
+  function apiInc(path) {
+    return fetch(SERVER + '/api/counter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'inc', target: path })
+    })
       .then(function(r) { return r.json(); })
-      .then(function(d) { return d.count; })
+      .then(function(d) { return d.data ? d.data.time : null; })
       .catch(function() { return null; });
   }
 
-  // 批量获取（并发请求）
-  function workerBatch(paths) {
-    return Promise.all(paths.map(function(p) { return workerGet(p); }))
-      .then(function(counts) {
-        var results = {};
-        paths.forEach(function(p, i) { results[p] = counts[i]; });
-        return results;
-      });
-  }
-
-  // ===== 静态 JSON 降级 =====
-  function jsonBatch(paths, data) {
-    var results = {};
-    paths.forEach(function(p) { results[p] = (data && data[p]) || 0; });
-    return Promise.resolve(results);
-  }
-
-  // ===== 公共 API =====
   window.PageView = {
     increment: function(path) {
       path = path || window.location.pathname;
-      if (WORKER) return workerInc(path);
+      if (SERVER) return apiInc(path);
       return Promise.resolve(null);
     },
 
     get: function(path) {
       path = path || window.location.pathname;
-      if (WORKER) return workerGet(path);
-      return Promise.resolve((_data && _data[path]) || 0);
+      if (SERVER) return apiGet(path);
+      return Promise.resolve(0);
     },
 
     fillCounts: function() {
@@ -74,42 +55,45 @@
         paths.push(elements[i].getAttribute('data-path') || window.location.pathname);
       }
 
-      var batchFn = WORKER ? workerBatch(paths) : jsonBatch(paths, _data);
-      batchFn.then(function(counts) {
-        for (var i = 0; i < elements.length; i++) {
-          var path = elements[i].getAttribute('data-path') || window.location.pathname;
-          elements[i].textContent = counts[path] || '0';
-        }
-      });
+      if (SERVER) {
+        // 逐个获取（OpenKounter 无批量 GET）
+        Promise.all(paths.map(function(p) { return apiGet(p); }))
+          .then(function(counts) {
+            for (var i = 0; i < elements.length; i++) {
+              elements[i].textContent = counts[i] || '0';
+            }
+          });
+      } else {
+        // 降级：加载静态 JSON
+        fetch(CDN_JSON)
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            for (var i = 0; i < elements.length; i++) {
+              var path = elements[i].getAttribute('data-path') || window.location.pathname;
+              elements[i].textContent = (data && data[path]) || '0';
+            }
+          })
+          .catch(function() {
+            for (var i = 0; i < elements.length; i++) {
+              elements[i].textContent = '0';
+            }
+          });
+      }
     }
   };
 
-  // ===== 页面加载自动执行 =====
+  // 页面加载后自动执行
   function init() {
-    if (WORKER) {
-      // 实时模式
-      PageView.fillCounts();
-      if (document.querySelector('.article-body')) {
-        PageView.increment().then(function(count) {
-          if (count !== null) {
-            var elements = document.querySelectorAll('.pageview-count');
-            for (var i = 0; i < elements.length; i++) {
-              elements[i].textContent = count;
-            }
+    PageView.fillCounts();
+    if (document.querySelector('.article-body') && SERVER) {
+      PageView.increment().then(function(count) {
+        if (count !== null) {
+          var elements = document.querySelectorAll('.pageview-count');
+          for (var i = 0; i < elements.length; i++) {
+            elements[i].textContent = count;
           }
-        });
-      }
-    } else {
-      // 降级模式: 加载静态 JSON
-      fetch(CDN_JSON)
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          _data = data;
-          PageView.fillCounts();
-        })
-        .catch(function() {
-          PageView.fillCounts(); // 全部显示 0
-        });
+        }
+      });
     }
   }
 
